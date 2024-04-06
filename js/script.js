@@ -28,31 +28,73 @@
 
 /*слайдер картинок*/
 
-let images = ['img/Leonard.jpg', 'img/Donatello_2003.jpg', 'img/Raphael_2003.jpg', 'img/Michelangelo.jpg']
+let imgSrc = ['img/Donatello_2003.jpg', 'img/Leonard.jpg', 'img/Michelangelo.jpg', 'img/Raphael_2003.jpg'];
 
-let slider2 = document.querySelector('#slider2');
-let img = slider.querySelectorAll('#img');
-const right2 = document.querySelector('#right2');
-const left2 = document.querySelector('#left2');
+// получить ссылки на элементы
+const leftControl = document.querySelector('#left');
+const rightControl = document.querySelector('#right');
+const image = document.querySelector('#image');
+const indicators = document.querySelector('#indicators')
 
-img.src = images[0];
+// объявить переменные
+
+// индикатор
+let indicator
+
+// перебираем массив картинок и создаем такоеже количество индикаторов
+imgSrc.forEach(() => {
+    indicator = document.createElement('li')
+    indicators.appendChild(indicator)
+    indicator.classList.add('slider__indicator')
+})
+
+// for (let i of imgSrc) {
+//     indicator = document.createElement('li')
+//     indicators.appendChild(indicator)
+//     indicator.classList.add('slider__indicator')
+// }
+
+// получить индикаторы созданные динамически
+let indicatorList = document.querySelectorAll('.slider__indicator')
+
+// выделить или сделать активным первый индикатор
+indicatorList[0].classList.add('active');
+
+// функция подсветки активного индикатора
+function addActiveIndicator(index) {
+    for (const indicator of indicatorList) {
+        indicator.classList.remove('active')
+    }
+    indicatorList[index].classList.add('active');
+}
+
+//  i - текущая картинка
 let i = 0;
 
-right2.addEventListener('click', (e) => {
-    e.preventDefault();
+// изначально отображать первую картинку из списка
+image.src = imgSrc[i]
+
+// следующее изображение
+rightControl.addEventListener('click', (e) => {
+    e.preventDefault;
     i++;
 
-    if (i == images.length) {
+    if (i == imgSrc.length) {
         i = 0;
     }
-    img.src = images[i];
+    image.src = imgSrc[i]
+    addActiveIndicator(i)
 })
 
-left2.addEventListener('click', (e) => {
-    e.preventDefault();
+
+leftControl.addEventListener('click', (e) => {
+    e.preventDefault;
     i--;
+
     if (i < 0) {
-        i = texts.length - 1;
+        i = imgSrc.length - 1;
     }
-    slider.textContent = texts[i]
+    image.src = imgSrc[i]
+    addActiveIndicator(i)
 })
+

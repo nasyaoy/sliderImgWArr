@@ -9,17 +9,24 @@
 </head>
 
 <body>
-    <div class="slider-block">
+    <!-- <div class="slider-block">
         <a href="" id="left" class="arrow">←</a>
         <div id="slider"></div>
         <div id="slider2"><img src="" alt=""></div>
         <a href="" id="right" class="arrow">→</a>
-    </div>
+    </div> -->
 
-    <div class="slider-block2 ">
-        <a href="" id="left2" class="arrow">←</a>
-        <div id="slider2"><img src="" alt="" id="img"></div>
-        <a href="" id="right2" class="arrow">→</a>
+    <div class="slider">
+        <div class="slider__content">
+            <a href="#" id="left" class="arrow">←</a>
+            <div class="image-wrap">
+                <img src="" width="260px" alt="" class="image" id="image">
+            </div>
+            <a href="#" id="right" class="arrow">→</a>
+        </div>
+        <ul class="slider__indicators" id="indicators">
+            <!-- сюда динамически добавляются индикаторы -->
+        </ul>
     </div>
 
     <script src="js/script.js"></script>
